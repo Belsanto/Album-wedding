@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ImageModal from "./imageModal";
+import ImageModal from "./ImageModal";
 
 function TimelineItem({ title, text, image, reverse = false }) {
   const [showModal, setShowModal] = useState(false);
