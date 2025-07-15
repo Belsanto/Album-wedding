@@ -3,21 +3,21 @@ function ShareContact() {
     <section className="py-20 bg-primary">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto text-center reveal active">
-          <h2 className="text-4xl md:text-5xl text-primary mb-8 font-dancing">
+          <h2 className="text-4xl md:text-5xl mb-8 font-dancing maintTittle">
             Compartenos Las Fotos y Videos Que Tomaste!
           </h2>
           <p className="text-xl mb-10 font-eb-garamond">
             Nos encantaría seguir llenando este album de recuerdos. Por favor, comparte fotos de este día que no esten aqui y nosotros no encargaremos de añadirlas.
           </p>
 
-          <div className="heart-animation mb-6">
+          <div className="heart-animation mb-6 ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="60"
               height="60"
               viewBox="0 0 24 24"
-              fill="#9b7b9b"
-              stroke="#9b7b9b"
+              fill="#A67C52"
+              stroke="#A67C52"
               strokeWidth="1"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -30,7 +30,7 @@ function ShareContact() {
             href="https://wa.me/3147808628"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-confirm inline-block text-white px-10 py-4 rounded-full text-xl mt-10 shadow-lg"
+            className="btn-confirm inline-block text-white px-10 py-4 rounded-full text-xl mt-10 shadow-lg mainColor"
           >
             Envíalas por WhatsApp
           </a>

@@ -25,7 +25,7 @@ function Videos() {
 
   return (
     <div className="pt-24 px-4 max-w-6xl mx-auto">
-      <h2 className="text-center text-3xl font-great-vibes text-primary mb-10">
+      <h2 className="text-center text-3xl font-great-vibes maintTittle mb-10">
         Videos Especiales
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">

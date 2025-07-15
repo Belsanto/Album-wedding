@@ -21,7 +21,7 @@ function Collage({ folder }) {
 
   return (
     <div className="pt-24 px-4 max-w-7xl mx-auto">
-      <h2 className="text-center text-3xl font-great-vibes text-primary mb-10 capitalize">
+      <h2 className="text-center text-3xl font-great-vibes maintTittle mb-10 capitalize">
         {folder}
       </h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
