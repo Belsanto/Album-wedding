@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Allura&family=Cormorant+Garamond&family=Dancing+Script&family=EB+Garamond&family=Great+Vibes&family=Satisfy&display=swap');
+
+/* Tipografías personalizadas como clases utilitarias */
+.font-eb-garamond { font-family: 'EB Garamond', serif; }
+.font-alex { font-family: 'Alex Brush', cursive; }
+.font-great-vibes { font-family: 'Great Vibes', cursive; }
+.font-dancing { font-family: 'Dancing Script', cursive; }
+.font-allura { font-family: 'Allura', cursive; }
+.font-satisfy { font-family: 'Satisfy', cursive; }
+
+/* Estilos generales */
+body {
+  font-family: 'Cormorant Garamond', serif;
+  scroll-behavior: smooth;
+  background-color: #fdfbf9;
+  color: #4a4a4a;
+  overflow-x: hidden;
+}
+
+/* Hero */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../assets/fotos/IMG_6840-3.jpg") center/cover no-repeat;
+  opacity: 0.41;
+  z-index: 0;
+}
+
+/* Otros estilos utilitarios */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.divider {
+  height: 2px;
+  width: 150px;
+  background-color: #9b7b9b;
+  margin: 20px auto;
+}
+
+.titulo{
+    color: black;
+    margin-bottom: 50px;
+}
+
+.timeline-dot {
+  width: 20px;
+  height: 20px;
+  background-color: #9b7b9b;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.timeline-line {
+  width: 2px;
+  height: 50px;
+  background-color: #9b7b9b;
+  margin: 0 auto;
+}
+
+.btn-confirm {
+  background-color: #9b7b9b;
+  transition: all 0.3s ease;
+}
+.btn-confirm:hover {
+  background-color: #8a6b8a;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.photo-frame {
+  border: 8px solid white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.heart-animation {
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.card-window {
+  height: 40vh;
+  width: 100%;
+  background-image: url("../assets/fotos/img_3.jpeg");
+  background-size: cover;
+  background-position: center 25%;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+
+.home-window {
+  height: 40vh;
+  width: 100%;
+  background-image: url("../assets/phone Pics/13.jpeg");
+  background-size: cover;
+  background-position: center 25%;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+
+@media (min-width: 768px) {
+  .card-window {
+    background-attachment: fixed;
+  }
+  .home-window {
+    background-attachment: fixed;
+  }
+}
+
+.round-icon {
+  padding: 5px;
+  border-radius: 100%;
+  border: 1px solid;
+  border-color: #4a4a4a;
+  align-content: center;
+  margin-left: 17px;
+}
+.disabled {
+  color: #0e0e0e !important;
+  padding: .2rem !important;
+}
+.disabled:hover {
+  color: #4a4a4a !important;
+}
+
+a.play-button {
+  color: black;
+  transition: color 0.3s ease;
+}
+a.play-button:hover {
+  color: rgba(255, 255, 255, 0.205);
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
+  font-size: 2.2rem;
+}
+
+.iconos-musica {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.flower-border {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='20' viewBox='0 0 100 20'%3E%3Cpath d='M10 10 C 12 7, 8 4, 5 5 C 2 6, 2 10, 5 11 C 8 12, 12 9, 10 10 Z' fill='%239b7b9b'/%3E%3Cpath d='M30 10 C 32 7, 28 4, 25 5 C 22 6, 22 10, 25 11 C 28 12, 32 9, 30 10 Z' fill='%239b7b9b'/%3E%3Cpath d='M50 10 C 52 7, 48 4, 45 5 C 42 6, 42 10, 45 11 C 48 12, 52 9, 50 10 Z' fill='%239b7b9b'/%3E%3Cpath d='M70 10 C 72 7, 68 4, 65 5 C 62 6, 62 10, 65 11 C 68 12, 72 9, 70 10 Z' fill='%239b7b9b'/%3E%3Cpath d='M90 10 C 92 7, 88 4, 85 5 C 82 6, 82 10, 85 11 C 88 12, 92 9, 90 10 Z' fill='%239b7b9b'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  height: 20px;
+}
+
+.bg-primary {
+  background-color: #f0e6e8;
+}
+
+.bg-secondary {
+  background-color: #c8a2c8;
+}
+
+.text-primary {
+  color: #9b7b9b;
+}
+
+.border-primary {
+  border-color: #c8a2c8;
+}
+
+.items-up {
+  align-items: start;
+}
+
+.fa-heart {
+  margin-right: 20px;
+}
+
+.TimelineItemVideo{
+  color: black;
+}
+
+.mainColor{
+  background-color: #A67C52 ;
+}
+.maintTittle{
+  color: #A67C52;
+}
