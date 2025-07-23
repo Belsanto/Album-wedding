@@ -1,7 +1,10 @@
+
+import otrasFotos from '../assets/otras/DSC_0003.jpg';
+
 function AlbumSelector({ onSelectAlbum }) {
   // Define los nombres y títulos de las carpetas
   const albums = [
-    { key: "otras", title: "Otras Fotos", cover: "/src/assets/otras/DSC_0003.jpg" },
+    { key: "otras", title: "Otras Fotos", cover: otrasFotos },
   ];
 
   return (
