@@ -189,3 +189,11 @@ a.play-button:hover {
 .maintTittle{
   color: #A67C52;
 }
+
+.mb-7 {
+    margin-bottom: 0;
+}
+
+.album .pt-24 {
+    padding-top: 1rem;
+}

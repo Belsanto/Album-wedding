@@ -27,7 +27,7 @@ function RSVP() {
           </div>
 
           <a
-            href="https://wa.me/3147808628"
+            href="https://boda-santi-estefa.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-confirm inline-block text-white px-10 py-4 rounded-full text-xl mt-10 shadow-lg"

@@ -1,61 +1,96 @@
+import { useEffect, useRef, useState } from "react";
+import videoData from "../assets/videos/videos.json";
+import PaginationControls from "../components/PaginationControls";
+import VideoGallery from "../components/VideoGallery";
+import VideoModal from "../components/VideoModal";
+import VideoSelectorHeader from "../components/VideoSelectorHeader";
 import ShareContact from "../components/ShareContact";
-import VideoCard from "../components/VideoCard";
 
 function Videos() {
-  const cloudinaryVertical = [
-    "https://res.cloudinary.com/ddbam3j0f/video/upload/v1752464516/WhatsApp_Video_2025-07-12_at_12.20.06_PM_kz3dkk.mp4",
-    "https://res.cloudinary.com/ddbam3j0f/video/upload/v1752464516/VID-20250712-WA0009_cdfs5m.mp4",
-    "https://res.cloudinary.com/ddbam3j0f/video/upload/v1752464516/WhatsApp_Video_2025-07-12_at_1.21.19_PM_arr54u.mp4",
-    "https://res.cloudinary.com/ddbam3j0f/video/upload/v1752464516/WhatsApp_Video_2025-07-12_at_1.21.22_PM_mydia6.mp4",
-    "https://res.cloudinary.com/ddbam3j0f/video/upload/v1752464516/WhatsApp_Video_2025-07-12_at_1.21.21_PM_yvpix7.mp4",
-    "https://res.cloudinary.com/ddbam3j0f/video/upload/v1752464515/VID-20250712-WA0021_ko4dz5.mp4",
-    "https://res.cloudinary.com/ddbam3j0f/video/upload/v1752464515/VID-20250712-WA0034_npbyym.mp4",
-    "https://res.cloudinary.com/ddbam3j0f/video/upload/v1752464515/VID-20250712-WA0025_oaww7l.mp4",
-    "https://res.cloudinary.com/ddbam3j0f/video/upload/v1752464514/VID-20250712-WA0023_xn9ekr.mp4"
+  const allVideos = [
+    ...(videoData.cloudinaryVertical || []).map((url) => ({
+      url,
+      type: "direct",
+      orientation: "vertical",
+    })),
+    ...(videoData.cloudinaryHorizontal || []).map((url) => ({
+      url,
+      type: "direct",
+      orientation: "horizontal",
+    })),
+    ...(videoData.vimeo || []).map((url) => ({
+      url,
+      type: "vimeo",
+      orientation: "horizontal",
+    })),
   ];
 
-  const cloudinaryHorizontal = [
-    "https://res.cloudinary.com/ddbam3j0f/video/upload/v1752464515/2025-07-11_17-23-23_vbnbi8.mkv"
-  ];
+  const [videosPerPage, setVideosPerPage] = useState("4");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(null);
 
-  const vimeoVideos = [
-    "https://player.vimeo.com/video/1101099808",
-    "https://player.vimeo.com/video/1101099065",
-  ];
+  const containerRef = useRef(null);
+
+  const totalVideos = allVideos.length;
+  const perPage = videosPerPage === "all" ? totalVideos : parseInt(videosPerPage);
+  const totalPages = Math.ceil(totalVideos / perPage);
+  const start = (currentPage - 1) * perPage;
+  const end = start + perPage;
+  const currentVideos = allVideos.slice(start, end);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [currentPage]);
 
   return (
-    <div className="pt-24 px-4 max-w-6xl mx-auto">
-      <h2 className="text-center text-3xl font-great-vibes maintTittle mb-10">
-        Videos Especiales
-      </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-        {cloudinaryVertical.map((url, index) => (
-          <VideoCard
-            key={`cloud-v-${index}`}
-            embedUrl={url}
-            type="direct"
-            orientation="vertical"
+    <div ref={containerRef} className="pt-24 px-4 max-w-6xl mx-auto">
+      <h2 className="text-center text-3xl font-great-vibes maintTittle mb-6">Videos Especiales</h2>
+
+      <VideoSelectorHeader
+        videosPerPage={videosPerPage}
+        setVideosPerPage={(value) => {
+          setVideosPerPage(value);
+          setCurrentPage(1);
+        }}
+        start={start}
+        end={end}
+        total={totalVideos}
+      />
+
+      {videosPerPage !== "all" && (
+        <>
+          <PaginationControls
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
           />
-        ))}
-        {cloudinaryHorizontal.map((url, index) => (
-          <VideoCard
-            key={`cloud-h-${index}`}
-            embedUrl={url}
-            type="direct"
-            orientation="horizontal"
+          <br />
+          <VideoGallery videos={currentVideos} onOpen={setCurrentVideoIndex} startIndex={start} />
+          <PaginationControls
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
           />
-        ))}
-        {vimeoVideos.map((url, index) => (
-          <VideoCard
-            key={`vimeo-${index}`}
-            embedUrl={url}
-            type="vimeo"
-            orientation="horizontal"
-          />
-        ))}
-      </div>
-      <br></br>
+        </>
+      )}
+
+      <br />
       <ShareContact />
+
+      {isModalOpen || currentVideoIndex !== null ? (
+        <VideoModal
+          videos={allVideos}
+          currentIndex={currentVideoIndex}
+          onClose={() => {
+            setIsModalOpen(false);
+            setCurrentVideoIndex(null);
+          }}
+          onSelect={setCurrentVideoIndex}
+        />
+      ) : null}
     </div>
   );
 }

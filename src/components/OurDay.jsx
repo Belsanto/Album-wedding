@@ -1,6 +1,6 @@
 import TimelineItem from './TimelineItem'
 import TimelineItemVideo from './TimelineItemVideo'
-import foto1 from '../assets/album/DSC_0021.jpg';
+import foto1 from '../assets/otras/DSC_0021.jpg';
 import foto2 from '../assets/fotos/screenshot.png';
 import foto3 from '../assets/fotos/coming_soon_elegant.jpg';
 

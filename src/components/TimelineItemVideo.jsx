@@ -1,5 +1,5 @@
 import { useState } from "react";
-import VideoModal from "./VideoModal";
+import VideoPopUp from "./VideoPopUp";
 
 function TimelineItemVideo({ title, text, videoUrl, thumb, type = "cloudinary", reverse }) {
   const [open, setOpen] = useState(false);
@@ -35,7 +35,7 @@ function TimelineItemVideo({ title, text, videoUrl, thumb, type = "cloudinary", 
       </div>
 
       {open && (
-        <VideoModal
+        <VideoPopUp
           videoUrl={videoUrl}
           type={type}
           onClose={() => setOpen(false)}

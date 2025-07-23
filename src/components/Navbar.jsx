@@ -24,22 +24,22 @@ function Navbar() {
           </li>
           <li>
             <NavLink
+              to="/album"
+              className={({ isActive }) =>
+                isActive ? `${baseLink} ${activeLink}` : baseLink
+              }
+            >
+              Álbumes
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
               to="/videos"
               className={({ isActive }) =>
                 isActive ? `${baseLink} ${activeLink}` : baseLink
               }
             >
               Videos
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/album"
-              className={({ isActive }) =>
-                isActive ? `${baseLink} ${activeLink}` : baseLink
-              }
-            >
-              Álbum
             </NavLink>
           </li>
           <li>
@@ -60,7 +60,7 @@ function Navbar() {
                 isActive ? `${baseLink} ${activeLink}` : baseLink
               }
             >
-              Recuerdo de Invitacion
+              Tarjeta de Invitacion
             </NavLink>
           </li>
         </ul>
