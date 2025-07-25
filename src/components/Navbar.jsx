@@ -34,22 +34,22 @@ function Navbar() {
           </li>
           <li>
             <NavLink
-              to="/videos"
-              className={({ isActive }) =>
-                isActive ? `${baseLink} ${activeLink}` : baseLink
-              }
-            >
-              Videos
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
               to="/fotos"
               className={({ isActive }) =>
                 isActive ? `${baseLink} ${activeLink}` : baseLink
               }
             >
               Fotos Compartidas
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/videos"
+              className={({ isActive }) =>
+                isActive ? `${baseLink} ${activeLink}` : baseLink
+              }
+            >
+              Videos
             </NavLink>
           </li>
           <li>
