@@ -1,36 +1,54 @@
 import { useEffect, useState } from "react";
-import otrasFotos from '../assets/otras/DSC_0003.jpg';
-import amigosFotos from '../assets/otras/DSC_0020.jpg';
 import fotosJson from '../assets/fotos/fotos.json';
 import comingSoon from '../assets/fotos/coming_soon_elegant.jpg';
+import todasCover from '../assets/boda/pareja/Estefa y Santiago-49.jpg';
+
+// Cargar todas las imágenes de álbumes locales dinámicamente
+const allLocalImages = import.meta.glob('/src/assets/boda/*/*.{jpg,jpeg,png}', {
+  eager: true,
+  as: 'url',
+});
 
 function AlbumSelector({ onSelectAlbum }) {
   const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
-    const covers = {
-      novia: fotosJson.novia?.[0] || comingSoon,
-      novio: fotosJson.novio?.[0] || comingSoon,
-      familia: fotosJson.familia?.[0] || comingSoon,
-      juntos: fotosJson.juntos?.[0] || comingSoon,
-      todas: fotosJson.juntos?.[2] || amigosFotos || comingSoon,
-      otras: otrasFotos || comingSoon,
-    };
+    const remoteAlbums = Object.entries(fotosJson)
+      .filter(([_, fotos]) => Array.isArray(fotos) && fotos.length > 0)
+      .map(([key, fotos]) => ({
+        key,
+        title: key.charAt(0).toUpperCase() + key.slice(1),
+        cover: fotos[0] || comingSoon,
+        isLocal: false,
+      }));
 
-    const dynamicAlbums = Object.keys(fotosJson).map((key) => ({
+    const localAlbumMap = {};
+    for (const path in allLocalImages) {
+      const match = path.match(/\/assets\/boda\/([^/]+)\/[^/]+\.(jpg|jpeg|png)$/);
+      if (match) {
+        const folder = match[1];
+        if (!localAlbumMap[folder]) {
+          localAlbumMap[folder] = allLocalImages[path]; // Primera imagen encontrada
+        }
+      }
+    }
+
+    const localAlbums = Object.entries(localAlbumMap).map(([key, cover]) => ({
       key,
       title: key.charAt(0).toUpperCase() + key.slice(1),
-      cover: fotosJson[key]?.[0] || comingSoon,
+      cover: cover || comingSoon,
+      isLocal: true,
     }));
 
-    setAlbums([
-      { key: "todas", title: "Todas las fotos", cover: covers.todas},
-      ...dynamicAlbums,
-      { key: "otras", title: "Otras fotos", cover: covers.otras },
-    ]);
+    const allAlbums = [
+      { key: "todas", title: "Todas las fotos", cover: todasCover },
+      ...remoteAlbums,
+      ...localAlbums,
+    ];
+
+    setAlbums(allAlbums);
   }, []);
 
-  // Función fallback para errores de carga de imagen
   const handleImgError = (e) => {
     e.target.onerror = null;
     e.target.src = comingSoon;

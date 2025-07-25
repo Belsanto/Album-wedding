@@ -6,10 +6,10 @@ import PaginationControls from "./PaginationControls";
 function Collage({ folder }) {
   const [images, setImages] = useState([]);
 
-  const allLocal = import.meta.glob('/src/assets/otras/**/*.{jpg,jpeg,JPG,png}', {
-    eager: true,
-    as: 'url'
-  });
+  const allLocal = import.meta.glob('/src/assets/boda/*/*.{jpg,jpeg,JPG,png}', {
+  eager: true,
+  as: 'url'
+});
 
   const allPhone = import.meta.glob('/src/assets/phone/**/*.{jpg,jpeg,JPG,png}', {
     eager: true,
@@ -17,22 +17,23 @@ function Collage({ folder }) {
   });
 
   useEffect(() => {
-    if (folder === "otras") {
-      const localImages = Object.values(allLocal);
-      setImages(localImages);
-    } else if (folder === "phone") {
+  if (folder === "todas") {
+    const remote = Object.values(fotosJson).flat();
+    const local = Object.values(allLocal);
+    setImages([...remote, ...local]);
+  } else if (folder === "phone") {
       const localImages = Object.values(allPhone);
       setImages(localImages);
-    } else if (folder === "todas") {
-      // Concatenar todas
-      const all = Object.values(fotosJson).flat();
-      const localImages = Object.values(allLocal);
-      setImages([...all, ...localImages]);
-    } else {
-      const remoteImages = fotosJson[folder] || [];
-      setImages(remoteImages);
-    }
-  }, [folder]);
+  } else if (fotosJson[folder]) {
+    setImages(fotosJson[folder]);
+  } else {
+    // Local específico
+    const localImages = Object.entries(allLocal)
+      .filter(([path]) => path.includes(`/boda/${folder}/`))
+      .map(([_, url]) => url);
+    setImages(localImages);
+  }
+}, [folder]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [imagesPerPage, setImagesPerPage] = useState(12);
