@@ -2,8 +2,8 @@ import TimelineItem from './TimelineItem'
 import TimelineItemVideo from './TimelineItemVideo'
 import foto1 from '../assets/boda/otras/DSC_0021.jpg';
 import fotoNovia from '../assets/boda/novia/Estefa y Santiago-6.jpg';
-import fotoFamily from '../assets/boda/Familia/Estefa y Santiago-177.jpg';
-import fotoBridis from '../assets/boda/Familia/Estefa y Santiago-232.jpg';
+import fotoFamily from '../assets/boda/familia y amigos/Estefa y Santiago-177.jpg';
+import fotoBridis from '../assets/boda/familia y amigos/Estefa y Santiago-232.jpg';
 import fotoPastel from '../assets/boda/otras/Estefa y Santiago-226.jpg';
 import fotoBye from '../assets/boda/pareja/Estefa y Santiago-220.jpg';
 import fotoThanks from '../assets/boda/pareja/Estefa y Santiago-146.jpg';
