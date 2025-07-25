@@ -141,10 +141,10 @@ function Collage({ folder }) {
       {showScrollTop && (
       <button
         onClick={scrollToTop}
-        className="fixed bottom-6 right-6 bg-pink-100 border border-pink-300 shadow-lg rounded-full p-3 hover:bg-pink-200 transition z-50 animate-bounce"
+        className="fixed bottom-6 right-6 bg-purple-100 border border-purple-300 shadow-lg rounded-full p-3 hover:bg-purple-200 transition z-50 animate-bounce"
         aria-label="Volver arriba"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-pink-600" fill="currentColor" viewBox="0 0 24 24">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 4l-8 8h6v8h4v-8h6z" />
         </svg>
       </button>
